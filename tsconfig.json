@@ -19,6 +19,13 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "utils/Store.js"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "utils/Store.js",
+    "utils/db.js",
+    "pages/api/auth/[...nextauth].js"
+  ],
   "exclude": ["node_modules"]
 }
