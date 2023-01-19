@@ -4,7 +4,7 @@ import Link from 'next/link';
 import React, { useContext, useEffect, useState } from 'react';
 
 export default function Layout({ children, title }: any) {
-  const { state, dispatch } = useContext(Store);
+  const { state } = useContext(Store);
   const { cart } = state;
   const [cartItemsCount, setCartItemsCount] = useState(0);
   useEffect(() => {
