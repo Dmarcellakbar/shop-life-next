@@ -8,7 +8,7 @@ import { getError } from '@/utils/error';
 import { PayPalButtons, usePayPalScriptReducer } from '@paypal/react-paypal-js';
 import { toast } from 'react-toastify';
 
-function reducer(state: any, action: any) {
+function reducer(state, action) {
   switch (action.type) {
     case 'FETCH_REQUEST':
       return { ...state, loading: true, error: '' };
@@ -85,7 +85,7 @@ function OrderScreen() {
     deliveredAt,
   } = order;
 
-  function createOrder(data: any, actions: any) {
+  function createOrder(data, actions) {
     return actions.order
       .create({
         purchase_units: [
@@ -94,13 +94,13 @@ function OrderScreen() {
           },
         ],
       })
-      .then((orderID: any) => {
+      .then((orderID) => {
         return orderID;
       });
   }
 
-  function onApprove(data: any, actions: any) {
-    return actions.order.capture().then(async function (details: any) {
+  function onApprove(data, actions) {
+    return actions.order.capture().then(async function (details) {
       try {
         dispatch({ type: 'PAY_REQUEST' });
         const { data } = await axios.put(
@@ -115,7 +115,7 @@ function OrderScreen() {
       }
     });
   }
-  function onError(err: any) {
+  function onError(err) {
     toast.error(getError(err));
   }
 
@@ -165,7 +165,7 @@ function OrderScreen() {
                   </tr>
                 </thead>
                 <tbody>
-                  {orderItems.map((item: any) => (
+                  {orderItems.map((item) => (
                     <tr key={item._id} className="border-b">
                       <td>
                         <Link href={`/product/${item.slug}`}>

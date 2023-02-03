@@ -12,7 +12,7 @@ export default function PaymentScreen() {
   const { cart } = state;
   const { shippingAddress, paymentMethod } = cart;
   const router = useRouter();
-  const submitHandler = (e: any) => {
+  const submitHandler = (e) => {
     e.preventDefault();
     if (!selectPaymentMethod) {
       return toast.error('Payment method is required');

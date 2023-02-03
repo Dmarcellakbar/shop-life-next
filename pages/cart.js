@@ -15,10 +15,10 @@ function CartScreen() {
   const {
     cart: { cartItems },
   } = state;
-  const removeItemHandler = (item: any) => {
+  const removeItemHandler = (item) => {
     dispatch({ type: 'CART_REMOVE_ITEM', payload: item });
   };
-  const updateCartHandler = async (item: any, qty: any) => {
+  const updateCartHandler = async (item, qty) => {
     const quantity = Number(qty);
     const { data } = await axios.get(`/api/products/${item._id}`);
     if (data.countInStock < quantity) {
@@ -47,7 +47,7 @@ function CartScreen() {
                 </tr>
               </thead>
               <tbody>
-                {cartItems.map((item: any) => (
+                {cartItems.map((item) => (
                   <tr key={item.slug} className="border-b">
                     <td>
                       <Link href={`/product/${item.slug}`}>
@@ -92,12 +92,8 @@ function CartScreen() {
             <ul>
               <li>
                 <div className="pb-3 text-xl">
-                  Subtotal (
-                  {cartItems.reduce((a: any, c: any) => a + c.quantity, 0)}) : $
-                  {cartItems.reduce(
-                    (a: any, c: any) => a + c.quantity * c.price,
-                    0
-                  )}
+                  Subtotal ({cartItems.reduce((a, c) => a + c.quantity, 0)}) : $
+                  {cartItems.reduce((a, c) => a + c.quantity * c.price, 0)}
                 </div>
               </li>
               <li>
